@@ -3,6 +3,7 @@ import { View, ImageBackground,StyleSheet } from "react-native";
 import Characters from "./src/components/Characters";
 
 export default function App(){
+  console.log('teste');
     return(
         <View style={styles.container}>
             <ImageBackground source={require('./src/img/teste1.jpg')} resizeMode="cover" style={styles.image}>
