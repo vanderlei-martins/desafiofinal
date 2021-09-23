@@ -1,24 +1,30 @@
 import React from "react";
-import { View, ImageBackground,StyleSheet } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import Details from "./src/screens/Details";
 import Characters from "./src/components/Characters";
+import "./src/config/ReactotronConfig";
 
-export default function App(){
-  console.log('teste');
-    return(
-        <View style={styles.container}>
-            <ImageBackground source={require('./src/img/teste1.jpg')} resizeMode="cover" style={styles.image}>
-                <Characters />
-            </ImageBackground>
-		</View>
-    )
-}
+const Stack = createStackNavigator();
+console.tron.log("Hello Reactotroooooon!!!!");
 
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-    },
-    image: {
-      flex: 1,
-    //   justifyContent: "center"
-    }
-  });
+const App = () => {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Rick and Morty"
+          component={Characters}
+          option={{ title: "Rick and Morty" }}
+        />
+        <Stack.Screen
+          name="Details"
+          component={Details}
+          options={{ title: "Rick and Morty" }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+};
+
+export default App;
