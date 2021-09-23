@@ -51,6 +51,6 @@ export const ImgCharacter = styled.Image`
     margin-top: 3px;
     width: 100px;
     height: 100px;
-    border-radius: 80;
+    border-radius: 80px;
     justify-content: flex-start;
 `;

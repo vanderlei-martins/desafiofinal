@@ -21,7 +21,7 @@ export default function Card({ data }) {
 			{/* </TouchableOpacity> */}
             <ViewInfo>
                 <Name>{data.name} <TextSpecies>{data.species}</TextSpecies></Name>
-                <TextLocation><Text style={{fontWeight: "bold"}}>Location</Text>: {data.location.name}</TextLocation>
+                <TextLocation><Text style={{fontWeight: "bold"}}>Location:</Text> {data.location.name}</TextLocation>
             </ViewInfo>
 		</ViewCard>
 	);
