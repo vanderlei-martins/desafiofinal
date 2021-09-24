@@ -1,5 +1,6 @@
 import styled from "styled-components/native";
 import Icon from "react-native-vector-icons/FontAwesome";
+import { ScrollView } from "react-native-gesture-handler";
 
 export const Section = styled.View`
   margin-bottom: 32px;
@@ -26,7 +27,7 @@ export const Container = styled.SafeAreaView`
   padding: 10px;
 `;
 
-export const ScrollView = styled.ScrollView`
+export const Scroll = styled(ScrollView)`
   flex: 1;
 `;
 
@@ -34,6 +35,7 @@ export const ShadowContainer = styled.View`
   background: #fff;
   border-radius: 16px;
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   padding: 20px;
   margin: 6px;
   height: 60px;

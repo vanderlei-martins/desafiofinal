@@ -11,8 +11,8 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 
 import {
-	getListAllCharacters,
-	getAllCharactersSelector,
+  getListAllCharacters,
+  getAllCharactersSelector,
 } from "../../redux/CharactersAction";
 
 import Card from "./Card";
@@ -23,15 +23,15 @@ export default function Characters() {
 	const listCharacters = useSelector(getAllCharactersSelector);
 	const [charactersByFilter, setCharactersByFilter] = useState([]);
 
-	useEffect(() => {
-		dispatch(getListAllCharacters());
-	}, []);
+  useEffect(() => {
+    dispatch(getListAllCharacters());
+  }, []);
 
-	async function getMoreCharacters() {
-		let nextPage = page + 1;
-		await setPage(nextPage);
-		await dispatch(getListAllCharacters(nextPage));
-	}
+  async function getMoreCharacters() {
+    let nextPage = page + 1;
+    await setPage(nextPage);
+    await dispatch(getListAllCharacters(nextPage));
+  }
 
 	function filterCharacters(text) {
 		if (!text) {
@@ -55,7 +55,7 @@ export default function Characters() {
 
 	return (
 		<ImageBackground
-			source={require("../../img/teste1.jpg")}
+            source={require("../../img/teste4.jpg")}
 			resizeMode="cover"
 			style={styles.image}
 		>
@@ -89,7 +89,7 @@ export default function Characters() {
 }
 
 const styles = StyleSheet.create({
-	image: {
-		flex: 1,
-	},
+  image: {
+    flex: 1,
+  },
 });
