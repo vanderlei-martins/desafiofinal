@@ -22,9 +22,10 @@ export const SectionSubtitle = styled.Text`
 
 export const SectionText = styled.Text``;
 
-export const Container = styled.SafeAreaView`
-  height: 70%;
-  padding: 10px;
+export const Container = styled.View`
+  height: 80%;
+  justify-content: center;
+  width: 100%;
 `;
 
 export const Scroll = styled(ScrollView)`

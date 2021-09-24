@@ -4,10 +4,8 @@ import { Dimensions, Animated } from "react-native";
 const { width } = Dimensions.get("window");
 
 export const Container = styled(Animated.View)`
-  height: 1000px;
   background: #fff;
-  border-top-left-radius: 32px;
-  border-top-right-radius: 32px;
+  border-radius: 32px;
   padding: 16px 0;
 `;
 
