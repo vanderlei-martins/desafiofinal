@@ -1,50 +1,56 @@
 import React, { useEffect, useState } from "react";
-import ImageBackground from "react-native";
+import { StyleSheet, ImageBackground } from "react-native";
 import { Container, ListCharacters, Background } from "./styles";
+import { useSelector, useDispatch } from "react-redux";
+
+import {
+	getListAllCharacters,
+	getAllCharactersSelector,
+} from "../../redux/CharactersAction";
 
 import Card from "./Card";
-import { getCharacters } from "../../services/api/api";
 
 export default function Characters() {
-  const [dados, setDados] = useState([]);
-  const [nextPage, setNextPage] = useState("");
+	const [page, setPage] = useState(1);
+    const dispatch = useDispatch();
+    const listCharacters = useSelector(getAllCharactersSelector);
 
-  useEffect(() => {
-    async function loadCharacters() {
-      let characters = await getCharacters();
-      setDados(characters.results);
-      setNextPage(characters.info.next);
-    }
+	useEffect(() => {
+        dispatch(getListAllCharacters());
+	}, []);
 
-    loadCharacters();
-  }, []);
+	async function getMoreCharacters() {
+        let nextPage = page + 1;
+		await setPage(nextPage);
+        await dispatch(getListAllCharacters(nextPage));
+	}
 
-  async function getMoreCharacters() {
-    let characters = await getCharacters(nextPage);
-    let newDados = [...dados, ...characters.results];
-    setDados(newDados);
-    setNextPage(characters.info.next);
-  }
-
-  return (
-    <Container>
-      {/* <ImageBackground
-        source={require("../../img/teste1.jpg")}
-        resizeMode="cover"
-		 >*/}
-      <Background>
-        <ListCharacters
-          showsVerticalScrollIndicator={false}
-          data={dados}
-          keyExtractor={(item) => item.id}
-          renderItem={({ item }) => {
-            return <Card data={item} />;
-          }}
-          onEndReached={getMoreCharacters}
-          onEndReachedThreshold={0.1}
-        />
-      </Background>
-      {/*</ImageBackground>*/}
-    </Container>
-  );
+	return (
+		<ImageBackground
+			source={require("../../img/teste1.jpg")}
+			resizeMode="cover"
+			style={styles.image}
+		>
+			<Container>
+				<Background>
+					<ListCharacters
+						showsVerticalScrollIndicator={false}
+						data={listCharacters}
+						keyExtractor={(item) => item.id}
+						renderItem={({ item }) => {
+							return <Card data={item} />;
+						}}
+						onEndReached={getMoreCharacters}
+						onEndReachedThreshold={0.1}
+					/>
+				</Background>
+			</Container>
+		</ImageBackground>
+	);
 }
+
+const styles = StyleSheet.create({
+	image: {
+		flex: 1,
+	},
+});
