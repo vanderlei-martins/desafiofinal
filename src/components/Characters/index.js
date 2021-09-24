@@ -66,7 +66,6 @@ export default function Characters() {
 							autoCapitalize="none"
 							autoCorrect={false}
 							clearButtonMode="always"
-							// value={''}
 							onChangeText={(text) => filterCharacters(text)}
 							placeholder="Digite o nome do personagem"
 						/>
