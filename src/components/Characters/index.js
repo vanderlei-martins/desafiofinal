@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { StyleSheet, ImageBackground } from "react-native";
-import { Container, ListCharacters, Background } from "./styles";
+import { SafeArea, Container, ListCharacters, Background } from "./styles";
 import { useSelector, useDispatch } from "react-redux";
 
 import {
@@ -12,17 +12,17 @@ import Card from "./Card";
 
 export default function Characters() {
 	const [page, setPage] = useState(1);
-    const dispatch = useDispatch();
-    const listCharacters = useSelector(getAllCharactersSelector);
+	const dispatch = useDispatch();
+	const listCharacters = useSelector(getAllCharactersSelector);
 
 	useEffect(() => {
-        dispatch(getListAllCharacters());
+		dispatch(getListAllCharacters());
 	}, []);
 
 	async function getMoreCharacters() {
-        let nextPage = page + 1;
+		let nextPage = page + 1;
 		await setPage(nextPage);
-        await dispatch(getListAllCharacters(nextPage));
+		await dispatch(getListAllCharacters(nextPage));
 	}
 
 	return (
@@ -31,20 +31,22 @@ export default function Characters() {
 			resizeMode="cover"
 			style={styles.image}
 		>
-			<Container>
-				<Background>
-					<ListCharacters
-						showsVerticalScrollIndicator={false}
-						data={listCharacters}
-						keyExtractor={(item) => item.id}
-						renderItem={({ item }) => {
-							return <Card data={item} />;
-						}}
-						onEndReached={getMoreCharacters}
-						onEndReachedThreshold={0.1}
-					/>
-				</Background>
-			</Container>
+			<SafeArea>
+				<Container>
+					<Background>
+						<ListCharacters
+							showsVerticalScrollIndicator={false}
+							data={listCharacters}
+							keyExtractor={(item) => item.id}
+							renderItem={({ item }) => {
+								return <Card data={item} />;
+							}}
+							onEndReached={getMoreCharacters}
+							onEndReachedThreshold={0.1}
+						/>
+					</Background>
+				</Container>
+			</SafeArea>
 		</ImageBackground>
 	);
 }

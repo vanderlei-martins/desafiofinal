@@ -1,5 +1,11 @@
 import styled from "styled-components";
 
+export const SafeArea = styled.SafeAreaView`
+    height: 100%;
+    padding: 10px;
+    padding-top: 15px;
+`;
+
 export const Container = styled.View`
   flex: 1;
 `;
