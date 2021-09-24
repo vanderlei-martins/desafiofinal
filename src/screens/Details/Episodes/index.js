@@ -6,14 +6,14 @@ import {
   IconPlay,
   Text,
   View,
-  ScrollView,
+  Scroll,
 } from "./styles";
 
 const Episodes = ({ character }) => {
   return (
     <>
       <Container>
-        <ScrollView>
+        <Scroll>
           {character.episode.map((episode, index) => {
             let numberEp = episode.split("/");
 
@@ -28,7 +28,7 @@ const Episodes = ({ character }) => {
               </ShadowContainer>
             );
           })}
-        </ScrollView>
+        </Scroll>
       </Container>
     </>
   );
