@@ -7,9 +7,9 @@ const URL_CHARACTERS = 'https://rickandmortyapi.com/api/character';
  * Retorna a lista de personagens e dados para a paginação.
  * @returns result | retorna o json com os dados dos personagens
  */
-export const getCharacters = async (url) => {
+export const getCharacters = async (page = 1) => {
   let result = null;
-  const response = await api.get(url ? url : URL_CHARACTERS);
+  const response = await api.get(URL_CHARACTERS + `?page=${page}`);
   result = response.data;
   return result;
 }
