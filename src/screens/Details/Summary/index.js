@@ -45,6 +45,8 @@ const Summary = ({ translateY, character }) => {
     }),
   };
 
+  const isFavorite = false;
+
   return (
     <Container style={summaryStyle}>
       <Header>
@@ -54,7 +56,11 @@ const Summary = ({ translateY, character }) => {
             <Id>{`#${character.id}`}</Id>
           </Animated.View>
           <Animated.View testId="FilmsContainer2">
-            <Icon name="heart-o" size={25} color="#fff" />
+            <Icon
+              name={isFavorite ? "heart" : "heart-o"}
+              size={25}
+              color="#fff"
+            />
           </Animated.View>
         </Row>
       </Header>
