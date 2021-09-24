@@ -1,6 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { StyleSheet, ImageBackground } from "react-native";
-import { SafeArea, Container, ListCharacters, Background } from "./styles";
+import {
+	SafeArea,
+	Container,
+	ListCharacters,
+	Background,
+	SearchView,
+	SearchTextInput,
+} from "./styles";
 import { useSelector, useDispatch } from "react-redux";
 
 import {
@@ -14,6 +21,7 @@ export default function Characters() {
 	const [page, setPage] = useState(1);
 	const dispatch = useDispatch();
 	const listCharacters = useSelector(getAllCharactersSelector);
+	const [charactersByFilter, setCharactersByFilter] = useState([]);
 
 	useEffect(() => {
 		dispatch(getListAllCharacters());
@@ -25,6 +33,26 @@ export default function Characters() {
 		await dispatch(getListAllCharacters(nextPage));
 	}
 
+	function filterCharacters(text) {
+		if (!text) {
+			setCharactersByFilter([]);
+			return;
+		}
+		console.log(listCharacters);
+		let filteredCharacteres = listCharacters.filter((character) => {
+			let pos = character.name.toLowerCase().indexOf(text.toLowerCase());
+			return pos != -1;
+		});
+
+		setCharactersByFilter(filteredCharacteres);
+	}
+
+	function renderCharacter() {
+		return charactersByFilter.length !== 0
+			? charactersByFilter
+			: listCharacters;
+	}
+
 	return (
 		<ImageBackground
 			source={require("../../img/teste1.jpg")}
@@ -33,10 +61,20 @@ export default function Characters() {
 		>
 			<SafeArea>
 				<Container>
+					<SearchView>
+						<SearchTextInput
+							autoCapitalize="none"
+							autoCorrect={false}
+							clearButtonMode="always"
+							// value={''}
+							onChangeText={(text) => filterCharacters(text)}
+							placeholder="Digite o nome do personagem"
+						/>
+					</SearchView>
 					<Background>
 						<ListCharacters
 							showsVerticalScrollIndicator={false}
-							data={listCharacters}
+							data={renderCharacter()}
 							keyExtractor={(item) => item.id}
 							renderItem={({ item }) => {
 								return <Card data={item} />;
