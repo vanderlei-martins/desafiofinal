@@ -35,6 +35,7 @@ export const ShadowContainer = styled.View`
   background: #fff;
   border-radius: 16px;
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   padding: 20px;
   margin: 6px;
   height: 60px;
