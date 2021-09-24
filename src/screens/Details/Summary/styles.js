@@ -2,7 +2,7 @@ import styled from "styled-components/native";
 import { Animated } from "react-native";
 
 export const Container = styled(Animated.View)`
-  height: 360px;
+  height: 350px;
   background-color: #191970;
 `;
 

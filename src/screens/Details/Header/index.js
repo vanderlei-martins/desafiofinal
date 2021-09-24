@@ -4,7 +4,7 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import { useNavigation } from "@react-navigation/native";
 import { Container, GoBackButton, Text } from "./styles";
 
-const Header = ({ translateY }) => {
+const Header = ({ translateY, character }) => {
   const navigation = useNavigation();
 
   const handleGoBack = useCallback(() => navigation.goBack(), [navigation]);
@@ -24,11 +24,11 @@ const Header = ({ translateY }) => {
       </GoBackButton>
 
       <Animated.View style={fadeStyle}>
-        <Text>Morty Smith</Text>
+        <Text>{character.name}</Text>
       </Animated.View>
 
       <Animated.View style={fadeStyle}>
-        <Text>#001</Text>
+        <Text>{`#${character.id}`}</Text>
       </Animated.View>
     </Container>
   );

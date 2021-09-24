@@ -11,31 +11,31 @@ import {
   ShadowContainer,
 } from "./styles";
 
-const About = () => {
+const About = ({ character }) => {
   return (
     <>
       <Section>
         <SectionContent>
           <SectionSubtitle>Status</SectionSubtitle>
           <SectionText key="2" style={{ marginRight: 8 }}>
-            Alive
+            {character.status}
           </SectionText>
         </SectionContent>
         <SectionContent>
           <SectionSubtitle>Species</SectionSubtitle>
           <SectionText key="2" style={{ marginRight: 8 }}>
-            Human
+            {character.species}
           </SectionText>
         </SectionContent>
         <SectionContent>
           <SectionSubtitle>Gender</SectionSubtitle>
           <SectionText key="1" style={{ marginRight: 16 }}>
-            <Text bold>Male </Text>
+            <Text bold>{character.gender} </Text>
 
             <>
               <Icon
-                name={"male" === "male" ? "mars" : "venus"}
-                color={"male" === "male" ? "#6890F0" : "#EE99AC"}
+                name={character.gender === "Male" ? "mars" : "venus"}
+                color={character.gender === "Male" ? "#6890F0" : "#EE99AC"}
                 size={16}
               />
               {"  "}
@@ -47,14 +47,14 @@ const About = () => {
           <SectionSubtitle>Origin</SectionSubtitle>
 
           <SectionText key="2" style={{ marginRight: 8 }}>
-            Earth
+            {character.origin.name}
           </SectionText>
         </SectionContent>
         <SectionContent>
           <SectionSubtitle>Location</SectionSubtitle>
 
           <SectionText key="2" style={{ marginRight: 8 }}>
-            Earth
+            {character.location.name}
           </SectionText>
         </SectionContent>
       </Section>

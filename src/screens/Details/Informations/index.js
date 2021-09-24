@@ -1,4 +1,4 @@
-import React, { useMemo, useCallback, useRef } from "react";
+import React, { useMemo, useCallback, useRef, useEffect } from "react";
 import { Animated, Dimensions, Text } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 
@@ -11,14 +11,15 @@ import {
 } from "./styles";
 
 import About from "../About";
+import Episodes from "../Episodes";
 
 const { width } = Dimensions.get("window");
 
 const tabs = [
   { name: "About", slide: About },
-  { name: "Episodes", slide: About },
+  { name: "Episodes", slide: Episodes },
 ];
-const Informations = () => {
+const Informations = ({ character }) => {
   const translateX = useMemo(() => new Animated.Value(0), []);
 
   const scrollViewRef = useRef < ScrollView > 0;
@@ -81,7 +82,7 @@ const Informations = () => {
       >
         {tabs.map(({ slide: Slide }, index) => (
           <SlideWrapper key={index}>
-            <Slide />
+            <Slide character={character} />
           </SlideWrapper>
         ))}
       </ScrollView>

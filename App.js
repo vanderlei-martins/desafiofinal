@@ -11,17 +11,17 @@ console.tron.log("Hello Reactotroooooon!!!!");
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="Rick and Morty"
-          component={Characters}
-          option={{ title: "Rick and Morty" }}
-        />
-        <Stack.Screen
-          name="Details"
-          component={Details}
-          options={{ title: "Rick and Morty" }}
-        />
+      <Stack.Navigator
+        screenOptions={{
+          gestureEnabled: false,
+          headerShown: false,
+          cardStyle: {
+            backgroundColor: "#fff",
+          },
+        }}
+      >
+        <Stack.Screen name="Rick and Morty" component={Characters} />
+        <Stack.Screen name="Details" component={Details} />
       </Stack.Navigator>
     </NavigationContainer>
   );

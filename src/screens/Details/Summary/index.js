@@ -11,7 +11,7 @@ import {
   Id,
 } from "./styles";
 
-const Summary = ({ translateY }) => {
+const Summary = ({ translateY, character }) => {
   const translateXNumber = useMemo(() => new Animated.Value(100), []);
   const translateXGenera = useMemo(() => new Animated.Value(200), []);
 
@@ -49,9 +49,9 @@ const Summary = ({ translateY }) => {
     <Container style={summaryStyle}>
       <Header>
         <Row>
-          <Name>Morty Smith</Name>
+          <Name>{character.name}</Name>
           <Animated.View testId="FilmsContainer">
-            <Id>#001</Id>
+            <Id>{`#${character.id}`}</Id>
           </Animated.View>
           <Animated.View testId="FilmsContainer2">
             <Icon name="heart-o" size={25} color="#fff" />
@@ -61,7 +61,7 @@ const Summary = ({ translateY }) => {
       <ImageContainer>
         <Image
           source={{
-            uri: "https://rickandmortyapi.com/api/character/avatar/2.jpeg",
+            uri: character.image,
           }}
         />
       </ImageContainer>

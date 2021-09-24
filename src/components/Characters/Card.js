@@ -22,7 +22,7 @@ const Card = ({ data }) => {
   const navigation = useNavigation();
 
   const handleNavigateCharacter = (data) => {
-    console.tron.log("DATA", data);
+    console.tron.log("aaaaaa", data);
     navigation.navigate("Details", {
       character: data,
     });

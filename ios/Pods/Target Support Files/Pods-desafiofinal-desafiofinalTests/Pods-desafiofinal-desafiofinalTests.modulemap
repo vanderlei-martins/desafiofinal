@@ -1,0 +1,6 @@
+module Pods_desafiofinal_desafiofinalTests {
+  umbrella header "Pods-desafiofinal-desafiofinalTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

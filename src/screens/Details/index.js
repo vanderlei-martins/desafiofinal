@@ -11,7 +11,7 @@ const Details = () => {
   const route = useRoute();
   const translateY = new Animated.Value(0);
 
-  console.tron.log("route params", route.params);
+  const character = route.params.character;
 
   const animatedEvent = Animated.event(
     [
@@ -62,14 +62,14 @@ const Details = () => {
   return (
     <Container>
       <Content>
-        <Header translateY={translateY} />
-        <Summary translateY={translateY} />
+        <Header translateY={translateY} character={character} />
+        <Summary translateY={translateY} character={character} />
         <PanGestureHandler
           onGestureEvent={animatedEvent}
           onHandlerStateChange={onHandlerStateChanged}
         >
           <DetailsContainer style={detailsStyle}>
-            <Informations />
+            <Informations character={character} />
           </DetailsContainer>
         </PanGestureHandler>
       </Content>
