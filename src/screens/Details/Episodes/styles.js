@@ -11,7 +11,6 @@ export const SectionTitle = styled.Text`
 
 export const SectionContent = styled.View`
   margin-top: 16px;
-
   flex-direction: row;
   align-items: center;
 `;
@@ -22,11 +21,13 @@ export const SectionSubtitle = styled.Text`
 
 export const SectionText = styled.Text``;
 
-export const Container = styled.View`
-  flex: 1;
+export const Container = styled.SafeAreaView`
+  height: 70%;
+  padding: 10px;
+`;
 
-  flex-direction: row;
-  flex-wrap: wrap;
+export const ScrollView = styled.ScrollView`
+  flex: 1;
 `;
 
 export const ShadowContainer = styled.View`
@@ -34,8 +35,7 @@ export const ShadowContainer = styled.View`
   border-radius: 16px;
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
-  margin: 4px;
-
+  margin: 6px;
   height: 60px;
   justify-content: center;
 `;

@@ -1,34 +1,34 @@
 import React from "react";
 
 import {
-  Section,
-  SectionTitle,
-  SectionContent,
-  SectionSubtitle,
-  SectionText,
   ShadowContainer,
   Container,
   IconPlay,
   Text,
   View,
+  ScrollView,
 } from "./styles";
 
 const Episodes = ({ character }) => {
-  console.tron.log("episodios", character.episode);
   return (
     <>
       <Container>
-        {character.episode.map((episode, index) => (
-          <ShadowContainer>
-            <View>
-              <Text>Ep {episode.slice(-1)}</Text>
+        <ScrollView>
+          {character.episode.map((episode, index) => {
+            let numberEp = episode.split("/");
 
-              <Text>
-                <IconPlay name="play" size={22} color="gray"></IconPlay>
-              </Text>
-            </View>
-          </ShadowContainer>
-        ))}
+            return (
+              <ShadowContainer>
+                <View>
+                  <Text>Ep {numberEp[5]}</Text>
+                  <Text>
+                    <IconPlay name="play" size={22} color="gray"></IconPlay>
+                  </Text>
+                </View>
+              </ShadowContainer>
+            );
+          })}
+        </ScrollView>
       </Container>
     </>
   );
