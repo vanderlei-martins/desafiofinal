@@ -38,7 +38,7 @@ export default function Characters() {
 			setCharactersByFilter([]);
 			return;
 		}
-		console.log(listCharacters);
+
 		let filteredCharacteres = listCharacters.filter((character) => {
 			let pos = character.name.toLowerCase().indexOf(text.toLowerCase());
 			return pos != -1;
