@@ -1,5 +1,5 @@
 import React from "react";
-import { Animated } from "react-native";
+import { Animated, ImageBackground, StyleSheet } from "react-native";
 import { PanGestureHandler, State } from "react-native-gesture-handler";
 import { Container, Content, DetailsContainer } from "./styles";
 import { useRoute } from "@react-navigation/native";
@@ -60,21 +60,33 @@ const Details = () => {
   };
 
   return (
-    <Container>
-      <Content>
-        <Header translateY={translateY} character={character} />
-        <Summary translateY={translateY} character={character} />
-        <PanGestureHandler
-          onGestureEvent={animatedEvent}
-          onHandlerStateChange={onHandlerStateChanged}
-        >
-          <DetailsContainer style={detailsStyle}>
-            <Informations character={character} />
-          </DetailsContainer>
-        </PanGestureHandler>
-      </Content>
-    </Container>
+    <ImageBackground
+      source={require("../../img/teste3.jpg")}
+      resizeMode="cover"
+      style={styles.image}
+    >
+      <Container>
+        <Content>
+          <Header translateY={translateY} character={character} />
+          <Summary translateY={translateY} character={character} />
+          <PanGestureHandler
+            onGestureEvent={animatedEvent}
+            onHandlerStateChange={onHandlerStateChanged}
+          >
+            <DetailsContainer style={detailsStyle}>
+              <Informations character={character} />
+            </DetailsContainer>
+          </PanGestureHandler>
+        </Content>
+      </Container>
+    </ImageBackground>
   );
 };
+
+const styles = StyleSheet.create({
+  image: {
+    flex: 1,
+  },
+});
 
 export default Details;

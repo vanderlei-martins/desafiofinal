@@ -26,9 +26,7 @@ export const Container = styled.SafeAreaView`
   padding: 10px;
 `;
 
-export const ScrollView = styled.ScrollView`
-  flex: 1;
-`;
+export const ScrollView = styled.ScrollView``;
 
 export const ShadowContainer = styled.View`
   background: #fff;
